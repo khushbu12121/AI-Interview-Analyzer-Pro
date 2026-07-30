@@ -5,7 +5,7 @@ import { MdEmail } from "react-icons/md";
 import { HiIdentification } from "react-icons/hi2";
 import "./Profile.css";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 
 function Profile() {
 
@@ -26,30 +26,18 @@ function Profile() {
 
       try {
 
-        const token =
-          localStorage.getItem(
-            "token"
-          );
-
-        const response =
-          await axios.get(
-            "http://127.0.0.1:8000/me",
-            {
-              headers: {
-                Authorization:
-                  `Bearer ${token}`
-              }
-            }
-          );
+       const response = await api.get(
+    "/me"
+);
 
         setUser(
           response.data
         );
 
-        const analyticsResponse =
-          await axios.get(
-            "http://127.0.0.1:8000/profile-analytics"
-          );
+       const analyticsResponse =
+    await api.get(
+        "/profile-analytics"
+    );
 
         setAnalytics(
           analyticsResponse.data

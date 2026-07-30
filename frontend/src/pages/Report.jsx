@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 import "./Report.css";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
@@ -195,15 +195,8 @@ if (
 
         
 
-const token = localStorage.getItem("token");
-
-const response = await axios.get(
-    `http://127.0.0.1:8000/report/${sessionId}`,
-    {
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
-    }
+const response = await api.get(
+    `/report/${sessionId}`
 );
 
 console.log(response.data.roadmap);

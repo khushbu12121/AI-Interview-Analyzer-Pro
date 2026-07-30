@@ -2,8 +2,7 @@ import PerformanceChart from "../components/PerformanceChart";
 import "./Dashboard.css";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from "axios";
-
+import api from "../api";
 
 import StatCard from "../components/StatCard";
 import QuickActionCard from "../components/QuickActionCard";
@@ -49,16 +48,9 @@ function Dashboard() {
 
     try {
 
-      const response =
-        await axios.get(
-          "http://127.0.0.1:8000/dashboard-stats",
-          {
-            headers: {
-              Authorization:
-                `Bearer ${token}`
-            }
-          }
-        );
+     const response = await api.get(
+    "/dashboard-stats"
+);
 
       setStats(response.data);
 
@@ -79,14 +71,9 @@ const fetchHistory = async () => {
 
   try {
 
-    const response = await axios.get(
-      "http://127.0.0.1:8000/history",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }
-    );
+    const response = await api.get(
+    "/dashboard"
+);
 
     const chartData = response.data.map((item, index) => ({
   interview: `I${index + 1}`,
@@ -138,19 +125,15 @@ setChartData(chartData);
 
     try {
 
-      const response =
-        await axios.post(
-          "http://127.0.0.1:8000/upload-resume",
-          formData,
-          {
-            headers: {
-              Authorization:
-                `Bearer ${token}`,
-              "Content-Type":
-                "multipart/form-data"
-            }
-          }
-        );
+      const response = await api.post(
+    "/upload-resume",
+    formData,
+    {
+        headers:{
+            "Content-Type":"multipart/form-data"
+        }
+    }
+);;
 
       setAnalysis(
         response.data.analysis

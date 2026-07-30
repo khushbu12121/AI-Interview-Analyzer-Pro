@@ -2,7 +2,7 @@ import Loader from "../components/Loader";
 import toast from "react-hot-toast";
 import "./History.css";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 import { useNavigate } from "react-router-dom";
 import StatCard from "../components/StatCard";
 
@@ -24,17 +24,9 @@ function History() {
 
     try {
 
-      const token = localStorage.getItem("token");
-
-      const response = await axios.get(
-        "http://127.0.0.1:8000/history",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
-      );
-
+      const response = await api.get(
+    "/history"
+);
       setHistory(response.data);
 
     } catch (error) {
@@ -67,10 +59,9 @@ function History() {
 
     try {
 
-      await axios.delete(
-        `http://127.0.0.1:8000/history/${sessionId}`
-      );
-
+      await api.delete(
+    `/history/${sessionId}`
+);
       toast.success("Interview deleted");
 
       fetchHistory();

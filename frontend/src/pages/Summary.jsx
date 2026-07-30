@@ -1,7 +1,7 @@
 import Loader from "../components/Loader";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 
 function Summary() {
 
@@ -25,17 +25,10 @@ function Summary() {
             "sessionId"
           );
 
-        const token = localStorage.getItem("token");
-
-const response =
-  await axios.get(
-    `http://127.0.0.1:8000/summary/${sessionId}`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }
-  );
+        const response =
+await api.get(
+    `/summary/${sessionId}`
+);
 
 console.log("Summary Data:", response.data);
           console.log("Summary Data:", response.data);

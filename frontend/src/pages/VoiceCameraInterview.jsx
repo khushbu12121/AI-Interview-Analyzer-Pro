@@ -1,6 +1,6 @@
 import toast from "react-hot-toast";
 import { useState, useEffect, useRef } from "react";
-import axios from "axios";
+import api from "../api";
 import * as faceapi from "face-api.js";
 import { useNavigate } from "react-router-dom";
 import InterviewWelcome from "../components/InterviewWelcome";
@@ -281,20 +281,11 @@ if (storedQuestions) {
 
   try {
 
-    const token =
-      localStorage.getItem("token");
-
-    const response =
-      await axios.post(
-        "http://127.0.0.1:8000/start-interview",
-        {},
-        {
-          headers: {
-            Authorization:
-              `Bearer ${token}`
-          }
-        }
-      );
+   const response =
+await api.post(
+    "/start-interview",
+    {}
+);
 
     const newSessionId =
       response.data.session_id;
@@ -418,21 +409,14 @@ const startAIInterview = () => {
 
   try {
 
-    const response = await axios.post(
-
-      "http://127.0.0.1:8000/submit-answer",
-
-      {
-
+   const response = await api.post(
+    "/submit-answer",
+    {
         session_id: sessionId,
-
         question: questions[currentQuestion],
-
         answer: answer
-
-      }
-
-    );
+    }
+);
     console.log("SUBMIT RESPONSE =", response.data);
     setEvaluation(response.data.feedback);
 

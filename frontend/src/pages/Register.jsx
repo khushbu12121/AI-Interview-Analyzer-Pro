@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../api";
 
 import {
   FiUser,
@@ -38,14 +38,14 @@ function Register() {
     }
 
     try {
-      const response = await axios.post(
-        "http://127.0.0.1:8000/register",
-        {
-          name,
-          email,
-          password,
-        }
-      );
+      const response = await api.post(
+    "/register",
+    {
+        name,
+        email,
+        password,
+    }
+);
 
       alert(response.data.message);
 

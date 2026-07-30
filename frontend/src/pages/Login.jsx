@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../api";
 import { useNavigate, Link } from "react-router-dom";
 
 import {
@@ -23,13 +23,13 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "http://127.0.0.1:8000/login",
-        {
-          email,
-          password,
-        }
-      );
+      const response = await api.post(
+    "/login",
+    {
+        email,
+        password
+    }
+);
 
       console.log("LOGIN RESPONSE =", JSON.stringify(response.data, null, 2));
 
