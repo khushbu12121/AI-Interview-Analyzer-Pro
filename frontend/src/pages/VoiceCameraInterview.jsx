@@ -443,7 +443,7 @@ if (response.data.completed) {
 
   captureSnapshot();
 
-  alert("COMPLETED = TRUE");
+  toast.success("Interview completed successfully!");
 
   navigate("/report");
 
