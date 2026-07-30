@@ -2,6 +2,8 @@ from sqlalchemy import Column
 from sqlalchemy import Integer
 from sqlalchemy import String
 from sqlalchemy import Text
+from sqlalchemy import ForeignKey
+from sqlalchemy.orm import relationship
 
 from app.models.user import Base
 
@@ -18,6 +20,7 @@ class Resume(Base):
 
     user_id = Column(
         Integer,
+        ForeignKey("users.id"),
         nullable=False
     )
 
@@ -34,4 +37,9 @@ class Resume(Base):
     resume_text = Column(
         Text,
         nullable=False
+    )
+
+    user = relationship(
+        "User",
+        back_populates="resumes"
     )

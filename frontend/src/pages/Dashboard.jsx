@@ -71,9 +71,7 @@ const fetchHistory = async () => {
 
   try {
 
-    const response = await api.get(
-    "/dashboard"
-);
+    const response = await api.get("/history");
 
     const chartData = response.data.map((item, index) => ({
   interview: `I${index + 1}`,

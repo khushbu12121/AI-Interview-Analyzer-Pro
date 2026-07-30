@@ -2,6 +2,7 @@ from sqlalchemy import Column
 from sqlalchemy import Integer
 from sqlalchemy import String
 from sqlalchemy import Text
+from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
 
 from app.models.user import Base
@@ -19,6 +20,7 @@ class InterviewSession(Base):
 
     user_id = Column(
         Integer,
+        ForeignKey("users.id"),
         nullable=False
     )
 
@@ -27,7 +29,6 @@ class InterviewSession(Base):
         nullable=False
     )
 
-    # NEW COLUMN
     questions = Column(
         Text,
         nullable=True
@@ -37,4 +38,14 @@ class InterviewSession(Base):
         String,
         default="active"
     )
-    
+
+    user = relationship(
+        "User",
+        back_populates="interview_sessions"
+    )
+
+    answers = relationship(
+        "InterviewAnswer",
+        back_populates="session",
+        cascade="all, delete-orphan"
+    )

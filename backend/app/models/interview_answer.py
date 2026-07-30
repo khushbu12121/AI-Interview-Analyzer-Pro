@@ -6,6 +6,7 @@ from sqlalchemy.orm import relationship
 
 from app.models.user import Base
 
+
 class InterviewAnswer(Base):
 
     __tablename__ = "interview_answers"
@@ -17,9 +18,10 @@ class InterviewAnswer(Base):
     )
 
     session_id = Column(
-    Integer,
-    nullable=False
-)
+        Integer,
+        ForeignKey("interview_sessions.id"),
+        nullable=False
+    )
 
     question = Column(
         String,
@@ -40,4 +42,8 @@ class InterviewAnswer(Base):
         String,
         nullable=True
     )
-   
+
+    session = relationship(
+        "InterviewSession",
+        back_populates="answers"
+    )

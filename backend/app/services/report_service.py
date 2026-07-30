@@ -149,16 +149,18 @@ def generate_report(
         try:
 
             summary_data = generate_summary(
-    session_id,
-    user_id
-)
+                session_id,
+                user_id
+            )
 
             summary = summary_data.get(
                 "summary",
                 "No summary available"
             )
 
-        except:
+        except Exception as e:
+
+            print("Summary Error:", e)
 
             summary = "Summary unavailable"
 
@@ -172,7 +174,9 @@ def generate_report(
                 session_id
             )
 
-        except:
+        except Exception as e:
+
+            print("Skill Gap Error:", e)
 
             skill_gap = "Skill gap unavailable."
 
@@ -186,7 +190,9 @@ def generate_report(
                 session_id
             )
 
-        except:
+        except Exception as e:
+
+            print("Roadmap Error:", e)
 
             roadmap = "Learning roadmap unavailable."
 
@@ -202,7 +208,9 @@ def generate_report(
                 )
             )
 
-        except:
+        except Exception as e:
+
+            print("Career Readiness Error:", e)
 
             career_readiness = {
 
