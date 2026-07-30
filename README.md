@@ -1,6 +1,13 @@
 # 🤖 AI Interview Analyzer Pro
 
-An AI-powered mock interview platform that helps candidates prepare for technical interviews through intelligent resume analysis, personalized interview generation, AI-based answer evaluation, emotion detection, and detailed performance reports.
+> **AI-powered Full Stack Mock Interview Platform** that helps candidates prepare for technical interviews through intelligent resume analysis, personalized interview generation, AI-based answer evaluation, emotion detection, and detailed performance reports.
+
+---
+
+## 🌐 Live Demo
+
+🚀 **Live Website:**  
+https://ai-interview-analyzer-pro.vercel.app
 
 ---
 
@@ -23,7 +30,7 @@ An AI-powered mock interview platform that helps candidates prepare for technica
 - Speech-to-Text (Voice Input)
 - 60-second Timer for Each Question
 - Live Camera Feed
-- Real-time Emotion Detection using Face API
+- Real-time Emotion Detection using Face-api.js
 
 ### 📊 AI Evaluation
 - AI-based Answer Evaluation
@@ -51,25 +58,57 @@ An AI-powered mock interview platform that helps candidates prepare for technica
 
 ---
 
-# 🛠 Tech Stack
+# 📸 Project Screenshots
 
-## Frontend
+## 🏠 Home Page
+
+![Home](screenshots/Home.png)
+
+---
+
+## 🔐 Login Page
+
+![Login](screenshots/login.png)
+
+---
+
+## 📊 Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+---
+
+## 🎤 AI Interview
+
+![Interview](screenshots/interview.png)
+
+---
+
+## 📜 Interview History
+
+![History](screenshots/history.png)
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
 - React.js
 - Vite
 - React Router
 - Axios
 - CSS
 
-## Backend
+### Backend
 - FastAPI
 - Python
 - SQLAlchemy
 - JWT Authentication
 
-## Database
+### Database
 - PostgreSQL (Neon)
 
-## AI & ML
+### AI & Machine Learning
 - Google Gemini API
 - Face-api.js
 - Web Speech API
@@ -78,16 +117,16 @@ An AI-powered mock interview platform that helps candidates prepare for technica
 
 # 📂 Project Structure
 
-```text
+```
 AI-Interview-Analyzer-Pro
 │
 ├── backend
 │   ├── app
 │   │   ├── api
+│   │   ├── database
 │   │   ├── models
 │   │   ├── schemas
 │   │   ├── services
-│   │   ├── database
 │   │   └── utils
 │   ├── requirements.txt
 │   └── main.py
@@ -95,11 +134,13 @@ AI-Interview-Analyzer-Pro
 ├── frontend
 │   ├── public
 │   ├── src
+│   │   ├── assets
 │   │   ├── components
 │   │   ├── pages
-│   │   ├── assets
 │   │   └── api.js
 │   └── package.json
+│
+├── screenshots
 │
 └── README.md
 ```
@@ -112,6 +153,7 @@ AI-Interview-Analyzer-Pro
 
 ```bash
 git clone https://github.com/khushbu12121/AI-Interview-Analyzer-Pro.git
+
 cd AI-Interview-Analyzer-Pro
 ```
 
@@ -151,7 +193,7 @@ npm run dev
 
 # 🔑 Environment Variables
 
-Create a `.env` file inside the backend folder.
+Create a `.env` file inside the **backend** folder.
 
 ```env
 DATABASE_URL=YOUR_NEON_DATABASE_URL
@@ -160,23 +202,10 @@ SECRET_KEY=YOUR_SECRET_KEY
 
 ALGORITHM=HS256
 
-ACCESS_TOKEN_EXPIRE_MINUTES=60
+ACCESS_TOKEN_EXPIRE_HOURS=24
 
 GEMINI_API_KEY=YOUR_GEMINI_API_KEY
 ```
-
----
-
-# 📸 Screenshots
-
-> Add screenshots after deployment.
-
-- Login Page
-- Dashboard
-- Resume Upload
-- AI Interview
-- Interview Report
-- Interview History
 
 ---
 
@@ -188,7 +217,8 @@ GEMINI_API_KEY=YOUR_GEMINI_API_KEY
 - CI/CD Pipeline
 - Interview Replay
 - Performance Graphs
-- Multi-role Interview Support
+- Google Login
+- Company-wise Interview Modes
 
 ---
 
@@ -196,9 +226,9 @@ GEMINI_API_KEY=YOUR_GEMINI_API_KEY
 
 **Khushbu Bansal**
 
-B.Tech CSE Student
+🎓 B.Tech Computer Science Engineering
 
-Full Stack Developer | AI Enthusiast
+💻 Full Stack Developer | AI Enthusiast
 
 GitHub: https://github.com/khushbu12121
 
@@ -206,10 +236,14 @@ GitHub: https://github.com/khushbu12121
 
 # ⭐ Project Status
 
-✅ Active Development
+✅ **Production Ready**
 
 ---
 
 # 💡 Why AI Interview Analyzer Pro?
 
-This platform simulates real interview experiences using AI-powered resume analysis, personalized interview generation, emotion detection, and intelligent answer evaluation. It helps candidates identify their strengths, improve weak areas, and prepare effectively for technical interviews.
+AI Interview Analyzer Pro provides an end-to-end interview preparation experience by combining **AI-powered resume analysis**, **personalized interview question generation**, **speech recognition**, **emotion detection**, and **detailed performance evaluation**. It helps candidates identify strengths, improve weak areas, and build confidence for real technical interviews.
+
+---
+
+## 🌟 If you found this project useful, don't forget to ⭐ star the repository!
