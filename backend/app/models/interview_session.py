@@ -1,6 +1,8 @@
 from sqlalchemy import Column
 from sqlalchemy import Integer
 from sqlalchemy import String
+from sqlalchemy import Text
+from sqlalchemy.orm import relationship
 
 from app.models.user import Base
 
@@ -25,7 +27,14 @@ class InterviewSession(Base):
         nullable=False
     )
 
+    # NEW COLUMN
+    questions = Column(
+        Text,
+        nullable=True
+    )
+
     status = Column(
         String,
         default="active"
     )
+    

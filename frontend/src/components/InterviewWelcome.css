@@ -1,0 +1,253 @@
+/* ==========================================
+        WELCOME CONTAINER
+========================================== */
+
+.welcome-container{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:30px 0;
+
+}
+
+.welcome-card{
+
+    width:100%;
+
+    max-width:900px;
+
+    background:linear-gradient(180deg,#1e293b,#111827);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:28px;
+
+    padding:45px;
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.30),
+        0 0 30px rgba(99,102,241,.12);
+
+}
+
+/* ==========================================
+            HERO
+========================================== */
+
+.welcome-icon{
+
+    width:100px;
+
+    height:100px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#6366f1,#8b5cf6);
+
+    font-size:45px;
+
+    box-shadow:0 0 35px rgba(99,102,241,.45);
+
+    margin-bottom:25px;
+
+}
+
+.welcome-title{
+
+    text-align:center;
+
+    color:white;
+
+    font-size:40px;
+
+    margin-bottom:10px;
+
+}
+
+.welcome-subtitle{
+
+    text-align:center;
+
+    color:#94a3b8;
+
+    font-size:18px;
+
+    margin-bottom:40px;
+
+}
+
+/* ==========================================
+            SESSION GRID
+========================================== */
+
+.session-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+    margin-bottom:35px;
+
+}
+
+.session-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    background:#111827;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:18px;
+
+    padding:20px;
+
+    transition:.3s;
+
+}
+
+.session-item:hover{
+
+    transform:translateY(-5px);
+
+    border-color:#8b5cf6;
+
+}
+
+.session-icon{
+
+    font-size:28px;
+
+}
+
+.session-item h4{
+
+    color:white;
+
+    margin:0;
+
+}
+
+.session-item p{
+
+    margin-top:5px;
+
+    color:#94a3b8;
+
+}
+
+/* ==========================================
+        INSTRUCTIONS
+========================================== */
+
+.instruction-card{
+
+    background:#111827;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:20px;
+
+    padding:30px;
+
+    margin-bottom:35px;
+
+}
+
+.instruction-card h3{
+
+    color:white;
+
+    margin-bottom:20px;
+
+}
+
+.instruction-card ul{
+
+    padding-left:20px;
+
+    color:#cbd5e1;
+
+    line-height:2;
+
+}
+
+/* ==========================================
+            BUTTON
+========================================== */
+
+.welcome-btn{
+
+    width:100%;
+
+    border:none;
+
+    border-radius:16px;
+
+    padding:18px;
+
+    background:linear-gradient(135deg,#6366f1,#8b5cf6);
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.welcome-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 15px 30px rgba(99,102,241,.35);
+
+}
+
+/* ==========================================
+        MOBILE
+========================================== */
+
+@media(max-width:768px){
+
+.session-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.welcome-card{
+
+padding:30px 20px;
+
+}
+
+.welcome-title{
+
+font-size:30px;
+
+}
+
+}

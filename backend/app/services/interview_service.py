@@ -11,25 +11,46 @@ from app.models.interview_answer import (
 
 def create_interview_session(
     user_id,
-    interview_type
+    interview_type,
+    questions=None
 ):
 
     db = SessionLocal()
 
     try:
 
+        if isinstance(questions, list):
+            questions = "\n".join(questions)
+
         session = InterviewSession(
             user_id=user_id,
-            interview_type=interview_type
+            interview_type=interview_type,
+            questions=questions
         )
 
         db.add(session)
-
         db.commit()
-
         db.refresh(session)
 
         return session
+
+    finally:
+        db.close()
+
+
+def get_interview_session(
+    session_id
+):
+
+    db = SessionLocal()
+
+    try:
+
+        return db.query(
+            InterviewSession
+        ).filter(
+            InterviewSession.id == session_id
+        ).first()
 
     finally:
 

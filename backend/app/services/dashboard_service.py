@@ -65,18 +65,65 @@ def get_dashboard_stats(user_id):
         )
 
         return {
-            "total_interviews":
-                total_interviews,
 
-            "total_answers":
-                total_answers,
+    "total_interviews":
+        total_interviews,
 
-            "average_score":
-                average_score,
+    "total_answers":
+        total_answers,
 
-            "best_score":
-                best_score
-        }
+    "average_score":
+        average_score,
+
+    "best_score":
+        best_score,
+
+    "career_readiness":
+        round(
+            average_score * 10,
+            0
+        ),
+
+    "level":
+        (
+            "Expert"
+            if average_score >= 8
+
+            else "Advanced"
+            if average_score >= 6
+
+            else "Intermediate"
+            if average_score >= 4
+
+            else "Beginner"
+        )
+}
+
+    finally:
+
+        db.close()
+
+def get_dashboard_summary(user_id):
+
+    db = SessionLocal()
+
+    try:
+
+        answers = (
+            db.query(InterviewAnswer)
+            .join(
+                InterviewSession,
+                InterviewAnswer.session_id ==
+                InterviewSession.id
+            )
+            .filter(
+                InterviewSession.user_id ==
+                user_id
+            )
+            .all()
+        )
+
+        return answers
 
     finally:
 

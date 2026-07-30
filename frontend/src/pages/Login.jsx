@@ -1,10 +1,21 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+
+import {
+FiMail,
+FiLock,
+FiEye,
+FiEyeOff
+} from "react-icons/fi";
+
+import "./Login.css";
+
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -20,14 +31,24 @@ function Login() {
         }
       );
 
-      console.log(response.data);
+      console.log("LOGIN RESPONSE =", JSON.stringify(response.data, null, 2));
 
-      localStorage.setItem(
-        "token",
-        response.data.access_token
-      );
+localStorage.setItem(
+  "token",
+  response.data.access_token
+);
 
-      alert("Login Successful!");
+console.log(
+  "ACCESS TOKEN =",
+  response.data.access_token
+);
+
+console.log(
+  "TOKEN SAVED =",
+  localStorage.getItem("token")
+);
+
+alert("Login Successful!");
 
       navigate("/dashboard");
 
@@ -39,46 +60,108 @@ function Login() {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
 
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>Email</label>
-          <br />
-          <input
-            type="email"
-            placeholder="Enter email"
-            value={email}
-            onChange={(e) =>
-              setEmail(e.target.value)
-            }
-          />
-        </div>
+<div className="login-page">
 
-        <br />
+<div className="login-card">
 
-        <div>
-          <label>Password</label>
-          <br />
-          <input
-            type="password"
-            placeholder="Enter password"
-            value={password}
-            onChange={(e) =>
-              setPassword(e.target.value)
-            }
-          />
-        </div>
 
-        <br />
+<div className="login-header">
+<div className="login-logo">
 
-        <button type="submit">
-          Login
-        </button>
-      </form>
-    </div>
-  );
+🤖
+
+</div>
+<h1>Welcome Back 👋</h1>
+
+<p>
+Login to continue your AI Interview journey.
+</p>
+
+</div>
+
+<form onSubmit={handleLogin}>
+
+<div className="input-group">
+
+<FiMail className="input-icon" />
+
+<input
+type="email"
+placeholder="Enter your email"
+value={email}
+onChange={(e)=>setEmail(e.target.value)}
+required
+/>
+
+</div>
+
+<div className="input-group">
+
+<FiLock className="input-icon" />
+
+<input
+type={showPassword ? "text" : "password"}
+placeholder="Enter your password"
+value={password}
+onChange={(e)=>setPassword(e.target.value)}
+required
+/>
+<span
+className="password-toggle"
+onClick={() => setShowPassword(!showPassword)}
+>
+
+{showPassword ? <FiEyeOff /> : <FiEye />}
+
+</span>
+</div>
+<div className="login-options">
+
+<label>
+
+<input type="checkbox"/>
+
+Remember Me
+
+</label>
+
+<a href="#">
+
+Forgot Password?
+
+</a>
+
+</div>
+
+<button
+type="submit"
+className="login-button"
+>
+
+Login
+
+</button>
+
+<div className="login-footer">
+
+Don't have an account?
+
+<Link to="/register">
+
+Register
+
+</Link>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+);
 }
 
 export default Login;

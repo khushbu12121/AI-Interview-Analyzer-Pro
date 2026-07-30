@@ -1,0 +1,201 @@
+/* ===============================
+   RESUME RESULT PAGE
+================================ */
+
+.resume-result-page {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top right, rgba(124, 58, 237, .25), transparent 35%),
+        radial-gradient(circle at bottom left, rgba(37, 99, 235, .25), transparent 35%),
+        #0b1120;
+
+    padding: 50px;
+    color: white;
+}
+
+.resume-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.resume-header h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.resume-header p {
+    color: #94a3b8;
+    font-size: 17px;
+}
+
+/* ===============================
+   GRID
+================================ */
+
+.resume-content {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
+    gap: 30px;
+}
+
+/* ===============================
+   CARD
+================================ */
+
+.glass-card {
+
+    background: rgba(20, 28, 48, .75);
+
+    backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 22px;
+
+    padding: 30px;
+
+    transition: .35s;
+
+    box-shadow: 0 15px 35px rgba(0,0,0,.25);
+}
+
+.glass-card:hover {
+
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 25px 45px rgba(0,0,0,.35),
+        0 0 25px rgba(124,58,237,.18);
+
+}
+
+.glass-card h2 {
+
+    margin-bottom: 25px;
+
+    font-size: 24px;
+
+}
+
+/* ===============================
+   SCORE
+================================ */
+
+.score-circle {
+
+    width: 170px;
+    height: 170px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 42px;
+    font-weight: bold;
+
+    color: white;
+
+    background:
+        conic-gradient(
+            #8b5cf6 0deg,
+            #2563eb 310deg,
+            #1e293b 310deg
+        );
+}
+
+.score-circle span {
+
+    width: 135px;
+    height: 135px;
+
+    border-radius: 50%;
+
+    background: #111827;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.glass-card p {
+
+    margin-top: 20px;
+
+    text-align: center;
+
+    color: #22c55e;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+}
+
+/* ===============================
+   BADGES
+================================ */
+
+.badge-container {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+}
+
+.skill-badge {
+
+    background: rgba(34,197,94,.15);
+
+    color: #4ade80;
+
+    padding: 10px 18px;
+
+    border-radius: 30px;
+
+    font-weight: 600;
+
+}
+
+.missing-badge {
+
+    background: rgba(239,68,68,.15);
+
+    color: #f87171;
+
+    padding: 10px 18px;
+
+    border-radius: 30px;
+
+    font-weight: 600;
+
+}
+
+/* ===============================
+   MOBILE
+================================ */
+
+@media(max-width:768px){
+
+    .resume-result-page{
+
+        padding:25px;
+
+    }
+
+    .resume-header h1{
+
+        font-size:32px;
+
+    }
+
+}

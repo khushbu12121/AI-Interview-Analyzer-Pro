@@ -1,5 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.api.profile_analytics import (
+    router as profile_analytics_router
+)
 
 from app.api.auth import router as auth_router
 from app.api.resume_api import router as resume_router
@@ -43,6 +46,10 @@ app.include_router(auth_router)
 app.include_router(resume_router)
 app.include_router(interview_router)
 app.include_router(history_router)
+app.include_router(
+    profile_analytics_router
+)
+
 
 
 @app.get("/")

@@ -1,0 +1,323 @@
+/* ===============================
+   REGISTER PAGE
+================================ */
+
+.register-page{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+
+    background:
+    radial-gradient(circle at top right,#7c3aed33,transparent 35%),
+    radial-gradient(circle at bottom left,#2563eb33,transparent 35%),
+    #0b1120;
+
+    padding:30px;
+}
+
+.register-page::before{
+    content:"";
+    position:absolute;
+    width:450px;
+    height:450px;
+    background:#7c3aed;
+    opacity:.18;
+    filter:blur(130px);
+    top:-150px;
+    right:-120px;
+    border-radius:50%;
+}
+
+.register-page::after{
+    content:"";
+    position:absolute;
+    width:350px;
+    height:350px;
+    background:#2563eb;
+    opacity:.15;
+    filter:blur(120px);
+    left:-100px;
+    bottom:-100px;
+    border-radius:50%;
+}
+
+/* ===============================
+   CARD
+================================ */
+
+.register-card{
+
+    position:relative;
+    z-index:2;
+
+    width:100%;
+    max-width:620px;
+
+    background:rgba(20,28,48,.78);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:24px;
+
+    padding:70px;
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.4),
+        0 0 40px rgba(124,58,237,.15);
+
+}
+
+/* ===============================
+   HEADER
+================================ */
+
+.register-header{
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+}
+
+.register-logo{
+
+    width:95px;
+    height:90px;
+
+    margin:0 auto 20px;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:40px;
+
+    background:linear-gradient(135deg,#8b5cf6,#2563eb);
+
+    box-shadow:0 0 30px rgba(139,92,246,.35);
+
+}
+
+.register-header h1{
+
+    color:white;
+
+    font-size:50px;
+
+    margin-bottom:10px;
+    font-weight: 800;
+
+}
+
+.register-header p{
+
+    color:#94a3b8;
+
+}
+
+/* ===============================
+   INPUTS
+================================ */
+
+.input-group{
+
+    position:relative;
+
+    margin-bottom:20px;
+
+}
+
+.input-icon{
+
+    position:absolute;
+
+    top:50%;
+
+    left:18px;
+
+    transform:translateY(-50%);
+
+    color:#8b5cf6;
+
+    font-size:20px;
+
+}
+
+.input-group input{
+
+    width:100%;
+
+    box-sizing:border-box;
+
+    padding: 20px 20px 20px 58px;
+
+    background:#182033;
+
+    color:white;
+
+    border-radius:14px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    outline:none;
+
+    font-size:22px;
+
+    transition:.3s;
+
+}
+
+.input-group input:focus{
+
+    border-color:#8b5cf6;
+
+    box-shadow:0 0 0 4px rgba(139,92,246,.15);
+
+}
+
+.password-toggle{
+
+    position:absolute;
+
+    top:50%;
+
+    right:18px;
+
+    transform:translateY(-50%);
+
+    cursor:pointer;
+
+    color:#94a3b8;
+
+    font-size:20px;
+
+}
+
+.password-toggle:hover{
+
+    color:#8b5cf6;
+
+}
+
+/* ===============================
+   OPTIONS
+================================ */
+
+.register-options{
+
+    margin-bottom:22px;
+
+    color:#94a3b8;
+
+    font-size:14px;
+
+}
+
+.register-options label{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    cursor:pointer;
+    font-size: 15px;
+
+}
+
+.register-options input{
+
+    accent-color:#8b5cf6;
+
+}
+
+/* ===============================
+   BUTTON
+================================ */
+
+.register-button{
+
+    width:100%;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    background:linear-gradient(135deg,#8b5cf6,#2563eb);
+
+    transition:.3s;
+    height: 56px;
+
+}
+
+.register-button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 12px 30px rgba(99,102,241,.35);
+
+}
+
+/* ===============================
+   FOOTER
+================================ */
+
+.register-footer{
+
+    margin-top:25px;
+
+    text-align:center;
+
+    color:#94a3b8;
+
+}
+
+.register-footer a{
+
+    color:#8b5cf6;
+
+    margin-left:6px;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+}
+
+.register-footer a:hover{
+
+    color:white;
+
+}
+.register-card{
+    animation: fadeUp .6s ease;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}

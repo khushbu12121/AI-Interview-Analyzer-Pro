@@ -1,31 +1,281 @@
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background: #1f2a56;
-  color: white;
+/* ==========================================
+   PREMIUM NAVBAR
+========================================== */
+
+.navbar{
+
+    position:sticky;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    z-index:1000;
+
+    background:rgba(10,15,28,.75);
+
+    backdrop-filter:blur(22px);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
 }
 
-.logo {
-  font-size: 28px;
-  font-weight: bold;
+.navbar-container{
+
+    width:min(96%,1650px);
+
+    height:82px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
 }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 30px;
+/* ===========================
+      LOGO
+=========================== */
+
+.navbar-logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    cursor:pointer;
+
+    user-select:none;
+
 }
 
-.nav-links li a {
-  text-decoration: none;
-  color: white;
-  font-size: 18px;
-  font-weight: 600;
-  transition: 0.3s;
+.navbar-logo-icon{
+
+    width:52px;
+
+    height:52px;
+
+    border-radius:16px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:linear-gradient(
+        135deg,
+        #7c5cff,
+        #3b82f6
+    );
+
+    color:white;
+
+    font-size:22px;
+
+    font-weight:800;
+
+    box-shadow:
+        0 12px 30px rgba(124,92,255,.35);
+
 }
 
-.nav-links li a:hover {
-  color: #8b5cf6;
+.navbar-logo-text{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.navbar-logo-text span{
+
+    font-size:15px;
+
+    color:#a5b4fc;
+
+    font-weight:600;
+
+}
+
+.navbar-logo-text h2{
+
+    font-size:28px;
+
+    color:white;
+
+    font-weight:800;
+
+    margin:0;
+
+    line-height:1.1;
+
+}
+/* ===========================
+      NAV LINKS
+=========================== */
+
+.navbar-links{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.navbar-links button{
+
+    background:none;
+
+    border:none;
+
+    color:#d1d5db;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    padding:12px 18px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:all .3s ease;
+
+}
+
+.navbar-links button:hover{
+
+    color:#ffffff;
+
+    background:rgba(124,92,255,.12);
+
+    transform:translateY(-2px);
+
+}
+
+/* ===========================
+      ACTIONS
+=========================== */
+
+.navbar-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+}
+
+.navbar-login{
+
+    height:46px;
+
+    padding:0 26px;
+
+    border-radius:14px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    background:transparent;
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.navbar-login:hover{
+
+    border-color:#8b5cf6;
+
+    background:rgba(124,92,255,.12);
+
+}
+
+.navbar-register{
+
+    height:46px;
+
+    padding:0 28px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:linear-gradient(
+        135deg,
+        #8b5cf6,
+        #3b82f6
+    );
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:
+        0 10px 25px rgba(124,92,255,.30);
+
+}
+
+.navbar-register:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 18px 35px rgba(124,92,255,.40);
+
+}
+
+/* ===========================
+      RESPONSIVE
+=========================== */
+
+@media (max-width:1100px){
+
+    .navbar-container{
+
+        width:94%;
+
+    }
+
+    .navbar-links{
+
+        gap:4px;
+
+    }
+
+}
+
+@media (max-width:900px){
+
+    .navbar-links{
+
+        display:none;
+
+    }
+
 }

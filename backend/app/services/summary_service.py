@@ -72,25 +72,59 @@ Feedback:
             )
 
         prompt = f"""
-You are an expert interview evaluator.
+You are a Senior Technical Interviewer and HR Evaluator.
 
-Analyze the complete interview below.
+Analyze the following interview based on the candidate's answers, scores, and feedback.
 
+Interview Data:
 {interview_text}
 
-Generate:
+Generate a professional interview report in the following format:
 
-1. Overall Score (/10)
+==================================================
 
-2. Strengths
+AI INTERVIEW SUMMARY
 
-3. Weaknesses
+Overall Performance:
+(Write 3-4 lines summarizing the candidate's overall interview performance.)
 
-4. Improvement Suggestions
+Overall Score:
+(Give an overall score out of 10 based on all answers.)
 
-5. Recommended Job Roles
+Strengths:
+- Point 1
+- Point 2
+- Point 3
 
-Keep the response professional and structured.
+Weaknesses:
+- Point 1
+- Point 2
+- Point 3
+
+Communication Skills:
+(Rate as Excellent / Good / Average / Needs Improvement with one-line explanation.)
+
+Technical Skills:
+(Rate as Excellent / Good / Average / Needs Improvement with one-line explanation.)
+
+Confidence Level:
+(High / Medium / Low)
+
+Hiring Recommendation:
+(Recommended / Recommended for Next Round / Needs Improvement)
+
+Recommended Job Roles:
+- Role 1
+- Role 2
+- Role 3
+
+Final Advice:
+(Write 2-3 lines suggesting how the candidate can improve before the next interview.)
+
+==================================================
+
+Keep the response professional, easy to read, and use bullet points where appropriate.
+Do not use markdown tables.
 """
 
         try:

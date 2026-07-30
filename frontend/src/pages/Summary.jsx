@@ -1,3 +1,5 @@
+import Loader from "../components/Loader";
+import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -5,6 +7,7 @@ function Summary() {
 
   const [summary, setSummary] =
     useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
 
@@ -31,16 +34,19 @@ function Summary() {
         setSummary(
           response.data.summary
         );
+        setLoading(false);
 
       } catch (error) {
 
         console.log(error);
 
-        alert(
-          "Failed to load summary"
-        );
+        toast.error("Failed to load summary");
+        setLoading(false);
       }
     };
+    if (loading) {
+  return <Loader />;
+}
 
   return (
 

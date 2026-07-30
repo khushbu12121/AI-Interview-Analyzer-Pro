@@ -1,0 +1,782 @@
+/* ===========================================================
+                    HISTORY PAGE V2
+=========================================================== */
+
+.history-page{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:26px;
+
+    width:100%;
+
+}
+
+/* ===========================================================
+                    PAGE HEADER
+=========================================================== */
+
+.history-header-section{
+
+    display:flex;
+
+    justify-content:flex-start;
+
+    align-items:flex-start;
+
+    margin:0;
+
+}
+
+.page-title{
+
+    font-size:38px;
+
+    font-weight:800;
+
+    color:#ffffff;
+
+    letter-spacing:-1px;
+
+    margin:0;
+
+    line-height:1.1;
+
+}
+
+.page-subtitle{
+
+    margin-top:12px;
+
+    font-size:19px;
+
+    color:#94a3b8;
+
+    max-width:700px;
+
+    line-height:1.7;
+
+}
+
+/* ===========================================================
+                    SEARCH
+=========================================================== */
+
+.search-wrapper{
+
+    margin-bottom:35px;
+
+}
+
+.search-box{
+
+    width:100%;
+
+    height:62px;
+
+    padding:0 22px;
+
+    border-radius:18px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:#1e293b;
+
+    color:white;
+
+    font-size:18px;
+
+    outline:none;
+
+    transition:.35s;
+
+}
+
+.search-box::placeholder{
+
+    color:#94a3b8;
+
+}
+
+.search-box:focus{
+
+    border-color:#7c5cff;
+
+    box-shadow:
+        0 0 0 4px rgba(124,92,255,.15);
+
+}
+
+/* ===========================================================
+                    SUMMARY
+=========================================================== */
+
+.summary-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
+
+    margin-bottom:40px;
+
+}
+
+.summary-card{
+
+    background:linear-gradient(
+        180deg,
+        #1f2937,
+        #273548
+    );
+
+    border-radius:24px;
+
+    padding:34px;
+
+    text-align:center;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:.35s;
+
+    box-shadow:
+        0 18px 35px rgba(0,0,0,.25);
+
+}
+
+.summary-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:#7c5cff;
+
+    box-shadow:
+        0 25px 45px rgba(124,92,255,.15);
+
+}
+
+.summary-icon{
+
+    width:72px;
+
+    height:72px;
+
+    margin:auto;
+
+    border-radius:20px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:34px;
+
+    background:linear-gradient(
+        135deg,
+        #6366f1,
+        #8b5cf6
+    );
+
+    margin-bottom:22px;
+
+}
+
+.summary-value{
+
+    color:white;
+
+    font-size:58px;
+
+    font-weight:800;
+
+    line-height:1;
+
+}
+
+.summary-title{
+
+    margin-top:18px;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:white;
+
+}
+
+.summary-description{
+
+    margin-top:10px;
+
+    font-size:16px;
+
+    color:#94a3b8;
+
+}
+/* ===========================================================
+                    HISTORY CARD
+=========================================================== */
+
+.history-card{
+
+    background:linear-gradient(
+        180deg,
+        #1d2838,
+        #263548
+    );
+
+    border-radius:22px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    padding:22px;
+
+    margin-bottom:30px;
+
+    transition:.3s;
+
+    box-shadow:
+        0 12px 28px rgba(0,0,0,.22);
+
+}
+
+.history-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:#7c5cff;
+
+    box-shadow:
+        0 25px 55px rgba(124,92,255,.18);
+
+}
+
+/* ===========================================================
+                    CARD HEADER
+=========================================================== */
+
+
+.card-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:18px;
+
+    margin-bottom:18px;
+    flex-wrap:wrap;
+
+}
+
+.interview-chip{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    padding:8px 16px;
+
+    border-radius:999px;
+
+    background:rgba(124,92,255,.15);
+
+    color:#a78bfa;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    letter-spacing:.4px;
+
+    margin-bottom:18px;
+
+    text-transform:uppercase;
+
+}
+
+.interview-title{
+
+   font-size:28px;
+
+    font-weight:700;
+
+    color:white;
+
+    margin:0;
+
+    line-height:1.2;
+
+}
+
+.session-id{
+
+    margin-top:6px;
+
+    color:#94a3b8;
+
+    font-size:18px;
+
+    font-weight:500;
+
+}
+
+/* ===========================================================
+                    SCORE
+=========================================================== */
+
+.score-badge{
+
+    min-width:110px;
+
+    height:52px;
+
+    padding:0 18px;
+
+    border-radius:999px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:white;
+
+    box-shadow:
+        0 12px 25px rgba(0,0,0,.25);
+
+}
+
+/* ===========================================================
+                    STATS
+=========================================================== */
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:22px;
+
+    margin-bottom:30px;
+
+}
+
+.stat-card{
+
+    background:#334155;
+
+    border-radius:20px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    padding:26px;
+
+    min-height:130px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    transition:.3s;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:#7c5cff;
+
+}
+
+.stat-label{
+
+    color:#cbd5e1;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    margin-bottom:14px;
+
+}
+
+
+
+/* ===========================================================
+                PERFORMANCE BADGE
+=========================================================== */
+
+.performance-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:12px 20px;
+
+    border-radius:999px;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    width:max-content;
+
+}
+
+.excellent{
+
+    background:#16a34a;
+
+    color:white;
+
+}
+
+.good{
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+.average{
+
+    background:#f59e0b;
+
+    color:white;
+
+}
+
+.poor{
+
+    background:#ef4444;
+
+    color:white;
+
+}
+/* ===========================================================
+                    BUTTONS
+=========================================================== */
+
+.history-actions{
+
+    display:flex;
+
+    gap:14px;
+
+    margin-top:12px;
+    justify-content:flex-end;
+
+}
+
+.primary-btn{
+
+     width:180px;
+
+    flex:none;
+
+
+    height:58px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:linear-gradient(
+        135deg,
+        #6366f1,
+        #8b5cf6
+    );
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    box-shadow:
+        0 12px 25px rgba(99,102,241,.28);
+
+}
+
+.primary-btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 20px 40px rgba(99,102,241,.40);
+
+}
+
+.delete-btn{
+
+    width:150px;
+
+    height:58px;
+
+    border-radius:16px;
+
+    border:1px solid #ef4444;
+
+    background:transparent;
+
+    color:#ef4444;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+.delete-btn:hover{
+
+    background:#ef4444;
+
+    color:white;
+
+    transform:translateY(-4px);
+
+}
+
+/* ===========================================================
+                    EMPTY CARD
+=========================================================== */
+
+.empty-card{
+
+    background:linear-gradient(
+        180deg,
+        #1f2937,
+        #273548
+    );
+
+    border-radius:24px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    padding:80px 30px;
+
+    text-align:center;
+
+}
+
+.empty-icon{
+
+    width:90px;
+
+    height:90px;
+
+    margin:auto;
+
+    border-radius:24px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:linear-gradient(
+        135deg,
+        #6366f1,
+        #8b5cf6
+    );
+
+    font-size:42px;
+
+    margin-bottom:24px;
+
+}
+
+.empty-card h2{
+
+    color:white;
+
+    font-size:36px;
+
+    margin-bottom:14px;
+
+}
+
+.empty-card p{
+
+    color:#94a3b8;
+
+    font-size:18px;
+
+    max-width:520px;
+
+    margin:auto;
+
+    line-height:1.8;
+
+}
+
+/* ===========================================================
+                    SCROLLBAR
+=========================================================== */
+
+.history-page::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+.history-page::-webkit-scrollbar-thumb{
+
+    background:#475569;
+
+    border-radius:999px;
+
+}
+
+.history-page::-webkit-scrollbar-thumb:hover{
+
+    background:#6366f1;
+
+}
+
+/* ===========================================================
+                    RESPONSIVE
+=========================================================== */
+
+@media(max-width:1200px){
+
+.summary-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:900px){
+
+.stats-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.history-actions{
+
+flex-direction:column;
+
+}
+
+.delete-btn{
+
+width:100%;
+
+}
+
+.card-top{
+
+flex-direction:column;
+
+}
+
+.score-badge{
+
+width:130px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+
+
+.page-title{
+
+font-size:38px;
+
+}
+
+.page-subtitle{
+
+font-size:16px;
+
+}
+
+.summary-value{
+
+font-size:46px;
+
+}
+
+.interview-title{
+
+font-size:28px;
+
+}
+
+.stat-card h3{
+
+font-size:34px;
+
+}
+
+.search-box{
+
+height:56px;
+
+font-size:16px;
+
+}
+
+.summary-card{
+
+padding:24px;
+
+}
+
+.history-card{
+
+padding:24px;
+
+}
+
+}
+.history-stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:22px;
+
+    margin-bottom:16px;
+
+}

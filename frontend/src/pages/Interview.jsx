@@ -1,580 +1,152 @@
-import { useState, useEffect, useRef } from "react";
-import axios from "axios";
-import * as faceapi from "face-api.js";
 import { useNavigate } from "react-router-dom";
-
+import "./Interview.css";
 
 function Interview() {
-  const navigate = useNavigate();
 
-  const storedQuestions =
-    localStorage.getItem("interviewQuestions");
+    const navigate = useNavigate();
 
-  const questions =
-    storedQuestions
-      ? storedQuestions
-          .split("\n")
-          .filter(
-            (q) =>
-              q.trim() !== "" &&
-              q.includes("?")
-          )
-      : ["Tell me about yourself"];
-
-  const [currentQuestion, setCurrentQuestion] =
-    useState(0);
-
-  const [answer, setAnswer] =
-    useState("");
-    const startVoiceInput = () => {
-
-  const recognition =
-    new window.webkitSpeechRecognition();
-
-  recognition.lang = "en-US";
-
-  recognition.continuous = false;
-
-  recognition.interimResults = false;
-
-  recognition.onresult = (event) => {
-
-    const transcript =
-      event.results[0][0].transcript;
-
-    setAnswer(
-      transcript
-    );
-  };
-  recognition.onstart = () => {
-  console.log("Recording Started");
-};
-
-recognition.onerror = (event) => {
-  console.log(
-    "ERROR =",
-    event.error
-  );
-};
-
-recognition.onend = () => {
-  console.log(
-    "Recording Ended"
-  );
-};
-
-  recognition.start();
-};
-const startCamera = async () => {
-
-  try {
-
-    const stream =
-      await navigator.mediaDevices.getUserMedia({
-        video: true
-      });
-
-    if (videoRef.current) {
-
-      videoRef.current.srcObject =
-        stream;
-    }
-
-  } catch (error) {
-
-    console.log(error);
-
-    alert(
-      "Camera access denied"
-    );
-  }
-};
-
-const loadModels = async () => {
-
-  await faceapi.nets.tinyFaceDetector.loadFromUri(
-    "/models"
-  );
-
-  await faceapi.nets.faceExpressionNet.loadFromUri(
-    "/models"
-  );
-
-  console.log(
-    "Models Loaded"
-  );
-};
-const detectEmotion = async () => {
-
-  if (!videoRef.current) return;
-
-  const detection =
-    await faceapi
-      .detectSingleFace(
-        videoRef.current,
-        new faceapi.TinyFaceDetectorOptions()
-      )
-      .withFaceExpressions();
-
-  if (
-    detection &&
-    detection.expressions
-  ) {
-
-    const expressions =
-      detection.expressions;
-
-    const dominantEmotion =
-      Object.keys(expressions)
-        .reduce((a, b) =>
-          expressions[a] >
-          expressions[b]
-            ? a
-            : b
-        );
-
-    setEmotion(
-      dominantEmotion
-    );
-    setEmotionHistory(
-  prev => [
-    ...prev,
-    dominantEmotion
-  ]
-);
-  }
-};
-  const [evaluation, setEvaluation] =
-    useState("");
-
-  const [sessionId, setSessionId] =
-    useState(null);
-  const videoRef = useRef(null);
-  const captureSnapshot = () => {
-
-  const canvas =
-    document.createElement("canvas");
-
-  canvas.width = 320;
-  canvas.height = 240;
-
-  const ctx =
-    canvas.getContext("2d");
-
-  ctx.drawImage(
-    videoRef.current,
-    0,
-    0,
-    320,
-    240
-  );
+    return (
 
-  const image =
-    canvas.toDataURL(
-      "image/png"
-    );
+        <div className="page-container">
 
-  localStorage.setItem(
-    "snapshot",
-    image
-  );
-};
-  const [timeLeft, setTimeLeft] =
-    useState(60);
-  const [emotion, setEmotion] =
-    useState("Loading...");
-  const [emotionHistory, setEmotionHistory] =
-    useState([]);
-    useEffect(() => {
+            {/* ===========================
+                    HEADER
+            =========================== */}
 
-  const interval =
-    setInterval(() => {
+            <div className="interview-header">
 
-      detectEmotion();
+                <div>
 
-    }, 2000);
+                    <h1 className="interview-title">
+                        AI Interview
+                    </h1>
 
-  return () =>
-    clearInterval(interval);
+                    <p className="interview-subtitle">
+                        Practice realistic AI interviews with instant evaluation,
+                        confidence analysis and detailed performance reports.
+                    </p>
 
-}, []);
+                </div>
 
-  const startInterview = async () => {
+                <div className="interview-badge">
 
-    try {
+                    🤖 AI Powered
 
-      const token =
-        localStorage.getItem("token");
+                </div>
 
-      const response =
-        await axios.post(
-          "http://127.0.0.1:8000/start-interview",
-          {},
-          {
-            headers: {
-              Authorization:
-                `Bearer ${token}`
-            }
-          }
-        );
+            </div>
 
-      
+            {/* ===========================
+                    HERO CARD
+            =========================== */}
 
-const newSessionId =
-  response.data.session_id;
+            <div className="hero-interview-card">
 
+                <div className="hero-icon">
+                    🎤
+                </div>
 
-      setSessionId(newSessionId);
+                <h2>
+                    Voice + Camera Interview
+                </h2>
 
-      localStorage.setItem(
-        "sessionId",
-        newSessionId
-      );
+                <p>
+                    Experience a real interview where AI listens to your
+                    answers, analyzes your confidence, detects facial
+                    expressions and generates a complete interview report.
+                </p>
 
-      console.log(
-        "New Session Created:",
-        newSessionId
-      );
+                <div className="feature-list">
 
-    } catch (error) {
+                    <div>✅ Voice Recognition</div>
 
-      console.log(error);
+                    <div>✅ Camera Emotion Analysis</div>
 
-      alert(
-        "Failed to start interview"
-      );
-    }
-  };
+                    <div>✅ AI Evaluation</div>
 
-  useEffect(() => {
+                    <div>✅ Instant AI Report</div>
 
-  const init = async () => {
+                </div>
 
-    await loadModels();
+                <button
+                    className="primary-btn"
+                    onClick={() => navigate("/voice-camera")}
+                >
+                    🚀 Start AI Interview
+                </button>
 
-    await startCamera();
+            </div>
 
-    startInterview();
-  };
+            {/* ===========================
+                    STATS
+            =========================== */}
 
-  init();
+            <div className="interview-stats">
 
-}, []);
+                <div className="mini-card">
 
-  useEffect(() => {
+                    <h3>10</h3>
 
-  if (timeLeft <= 0) {
+                    <span>Questions</span>
 
-    if (answer.trim()) {
+                </div>
 
-      handleSubmit();
+                <div className="mini-card">
 
-    }
+                    <h3>10 Min</h3>
 
-    handleNext();
+                    <span>Duration</span>
 
-    setTimeLeft(60);
+                </div>
 
-    return;
-  }
+                <div className="mini-card">
 
-  const timer =
-    setTimeout(() => {
+                    <h3>AI</h3>
 
-      setTimeLeft(
-        timeLeft - 1
-      );
+                    <span>Evaluation</span>
 
-    }, 1000);
+                </div>
 
-  return () =>
-    clearTimeout(timer);
+                <div className="mini-card">
 
-}, [timeLeft]);
+                    <h3>📄</h3>
 
-  const handleSubmit = async () => {
+                    <span>Detailed Report</span>
 
-    if (!answer.trim()) {
+                </div>
 
-      alert(
-        "Please enter an answer"
-      );
+            </div>
 
-      return;
-    }
+            {/* ===========================
+                    TIPS
+            =========================== */}
 
-    try {
+            <div className="tips-card">
 
-      const response =
-        await axios.post(
-          "http://127.0.0.1:8000/submit-answer",
-          {
-            session_id: sessionId,
-            question:
-              questions[currentQuestion],
-            answer: answer
-          }
-        );
-
-      setEvaluation(
-        response.data.feedback
-      );
+                <h3>
+                    💡 Before You Start
+                </h3>
 
-      alert(
-        `Answer Saved\nScore: ${response.data.score}/10`
-      );
-
-    } catch (error) {
-
-      console.log(error);
-
-      alert(
-        "Evaluation Failed"
-      );
-    }
-  };
-
-  const handleNext = () => {
-
-    if (
-      currentQuestion <
-      questions.length - 1
-    ) {
-
-      setCurrentQuestion(
-        currentQuestion + 1
-      );
-
-      setAnswer("");
-
-      setEvaluation("");
-      setTimeLeft(60);
-
-    } else {
-
-  captureSnapshot();
-
-localStorage.setItem(
-  "emotionHistory",
-  JSON.stringify(
-    emotionHistory
-  )
-);
-
-alert(
-  "Interview Completed!"
-);
-
-navigate("/report");
-}
-    };
-
-  return (
-
-    <div className="page-container">
-
-      <h1
-        style={{
-          textAlign: "center",
-          marginBottom: "20px"
-        }}
-      >
-        Mock Interview
-      </h1>
-
-      <h3
-        style={{
-          textAlign: "center",
-          color: "#6366f1"
-        }}
-      >
-        Session ID: {sessionId}
-      </h3>
-      <div
-  style={{
-    textAlign: "center",
-    marginBottom: "20px"
-  }}
->
-
-  <video
-    ref={videoRef}
-    autoPlay
-    muted
-    width="320"
-    height="240"
-    style={{
-      borderRadius: "12px",
-      border: "3px solid #8b5cf6"
-    }}
-  />
-  <h3
-  style={{
-    color: "#fbbf24",
-    marginTop: "10px"
-  }}
->
-  Emotion: {emotion}
-</h3>
-
-</div>
-
-      <h2
-        style={{
-          textAlign: "center"
-        }}
-      >
-        Question {currentQuestion + 1}
-        /{questions.length}
-      </h2>
-      <h3
-  style={{
-    textAlign: "center",
-    color: "#fbbf24",
-    marginBottom: "20px"
-  }}
->
-  Time Left: {timeLeft}s
-</h3>
-<div
-  style={{
-    width: "100%",
-    height: "12px",
-    background: "#374151",
-    borderRadius: "10px",
-    marginBottom: "25px",
-    overflow: "hidden"
-  }}
->
-  <div
-    style={{
-      width: `${
-        ((currentQuestion + 1) /
-          questions.length) *
-        100
-      }%`,
-      height: "100%",
-      background:
-        "linear-gradient(90deg,#6366f1,#8b5cf6)",
-      transition:
-        "0.5s"
-    }}
-  />
-</div>
-
-      <div
-        style={{
-          background: "#ffffff",
-          color: "#111827",
-          padding: "25px",
-          borderRadius: "15px",
-          marginBottom: "25px",
-          border: "2px solid #8b5cf6",
-          fontSize: "20px",
-          fontWeight: "500",
-          lineHeight: "1.8"
-        }}
-      >
-        {questions[currentQuestion]}
-      </div>
-
-      <textarea
-        rows="8"
-        value={answer}
-        onChange={(e) =>
-          setAnswer(
-            e.target.value
-          )
-        }
-        placeholder="Type your answer here..."
-        style={{
-          width: "100%",
-          padding: "15px",
-          borderRadius: "10px",
-          border: "1px solid #ccc",
-          fontSize: "16px"
-        }}
-      />
-      <div
-  style={{
-    textAlign: "right",
-    marginTop: "8px",
-    color: "#94a3b8",
-    fontSize: "14px"
-  }}
->
-  Answer Length:
-  {" "}
-  {answer.length}
-  {" "}
-  characters
-</div>
-      <div
-  style={{
-    textAlign: "center",
-    marginTop: "15px"
-  }}
->
-  <button
-  className="primary-btn"
-  onClick={startVoiceInput}
->
-  🎤 Speak Answer
-</button>
-</div>
-
-      <div
-        style={{
-          textAlign: "center",
-          marginTop: "20px"
-        }}
-      >
-        <button
-          className="primary-btn"
-          onClick={handleSubmit}
-        >
-          Submit Answer
-        </button>
-      </div>
-
-      {evaluation && (
-
-        <div
-          style={{
-            marginTop: "25px",
-            background: "#f8fafc",
-            border: "1px solid #ddd",
-            borderRadius: "12px",
-            padding: "20px",
-            whiteSpace: "pre-wrap",
-            color: "#111827"
-          }}
-        >
-          <h2>
-            AI Evaluation
-          </h2>
-
-          {evaluation}
+                <ul>
+
+                    <li>Choose a quiet environment.</li>
+
+                    <li>Keep your camera turned ON.</li>
+
+                    <li>Speak naturally and confidently.</li>
+
+                    <li>Use a stable internet connection.</li>
+
+                    <li>Avoid switching tabs during interview.</li>
+
+                </ul>
+
+            </div>
+
         </div>
 
-      )}
+    );
 
-      <div
-        style={{
-          textAlign: "center",
-          marginTop: "20px"
-        }}
-      >
-        <button
-          className="primary-btn"
-          onClick={handleNext}
-        >
-          Next Question
-        </button>
-      </div>
-
-    </div>
-  );
 }
 
 export default Interview;

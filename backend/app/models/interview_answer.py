@@ -1,9 +1,10 @@
 from sqlalchemy import Column
 from sqlalchemy import Integer
 from sqlalchemy import String
+from sqlalchemy import ForeignKey
+from sqlalchemy.orm import relationship
 
 from app.models.user import Base
-
 
 class InterviewAnswer(Base):
 
@@ -16,9 +17,9 @@ class InterviewAnswer(Base):
     )
 
     session_id = Column(
-        Integer,
-        nullable=False
-    )
+    Integer,
+    nullable=False
+)
 
     question = Column(
         String,
@@ -39,3 +40,4 @@ class InterviewAnswer(Base):
         String,
         nullable=True
     )
+   
