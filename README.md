@@ -1,141 +1,143 @@
-# AI Interview Analyzer V2
+# 🤖 AI Interview Analyzer Pro
 
-An AI-powered interview preparation platform that helps candidates practice interviews, analyze performance, and improve job readiness through intelligent feedback and analytics.
-
-## Features
-
-### Authentication
-
-* User Registration
-* User Login
-* JWT-based Authentication
-* Protected Routes
-
-### Resume Analysis
-
-* Resume Upload (PDF)
-* Resume Storage
-* Resume Processing
-* Interview Type Selection
-
-### AI Interview System
-
-* AI-generated Interview Questions
-* Mock Interview Environment
-* Answer Submission
-* Speech Input Support
-* Timer-based Interview Flow
-
-### Performance Evaluation
-
-* AI Answer Analysis
-* Technical Score
-* Communication Score
-* Confidence Assessment
-* Improvement Suggestions
-
-### Dashboard
-
-* Total Interviews
-* Total Answers
-* Average Score
-* Best Score
-* User Activity Overview
-
-### Interview History
-
-* Previous Interview Records
-* Questions and Answers
-* AI Feedback Storage
-* Performance Tracking
-
-### Reports & Analytics
-
-* Performance Report
-* Interview Statistics
-* Hiring Recommendation
-* Emotion Analysis Section
-* Performance Trends
-
-### User Profile
-
-* User Information
-* Account Management
-* Interview Progress Overview
+An AI-powered mock interview platform that helps candidates prepare for technical interviews through intelligent resume analysis, personalized interview generation, AI-based answer evaluation, emotion detection, and detailed performance reports.
 
 ---
 
-## Tech Stack
+## 🚀 Features
 
-### Frontend
+### 🔐 Authentication
+- User Registration & Login
+- JWT-based Authentication
+- Protected Routes
+- Secure API Access
 
-* React.js
-* React Router
-* Axios
-* Vite
-* CSS
+### 📄 Resume Analysis
+- Upload Resume (PDF)
+- AI Resume Analysis using Google Gemini
+- Skill Extraction
+- Personalized Interview Question Generation
 
-### Backend
+### 🎤 AI Mock Interview
+- AI-generated Interview Questions
+- Speech-to-Text (Voice Input)
+- 60-second Timer for Each Question
+- Live Camera Feed
+- Real-time Emotion Detection using Face API
 
-* FastAPI
-* Python
-* SQLAlchemy
-* JWT Authentication
-* SQLite
+### 📊 AI Evaluation
+- AI-based Answer Evaluation
+- Technical Score
+- Communication Score
+- Confidence Assessment
+- Personalized Feedback
+- Hiring Recommendation
 
-### AI Integration
+### 📑 Reports & Analytics
+- Interview Summary
+- PDF Report Generation
+- Learning Roadmap
+- Emotion Analysis
+- Performance Statistics
+- Best Score & Average Score
 
-* Google Gemini API
-
-### Additional Features
-
-* Face Detection Models
-* Resume Parsing
-* Performance Analytics
+### 📈 Dashboard
+- Total Interviews
+- Total Answers
+- Average Score
+- Best Score
+- Interview History
+- Progress Tracking
 
 ---
 
-## Project Structure
+# 🛠 Tech Stack
+
+## Frontend
+- React.js
+- Vite
+- React Router
+- Axios
+- CSS
+
+## Backend
+- FastAPI
+- Python
+- SQLAlchemy
+- JWT Authentication
+
+## Database
+- PostgreSQL (Neon)
+
+## AI & ML
+- Google Gemini API
+- Face-api.js
+- Web Speech API
+
+---
+
+# 📂 Project Structure
 
 ```text
-AI-Interview-Analyzer-V2
+AI-Interview-Analyzer-Pro
 │
 ├── backend
 │   ├── app
 │   │   ├── api
-│   │   ├── services
 │   │   ├── models
 │   │   ├── schemas
-│   │   └── database
+│   │   ├── services
+│   │   ├── database
+│   │   └── utils
+│   ├── requirements.txt
 │   └── main.py
 │
 ├── frontend
+│   ├── public
 │   ├── src
-│   │   ├── pages
 │   │   ├── components
-│   │   └── services
-│   └── public
+│   │   ├── pages
+│   │   ├── assets
+│   │   └── api.js
+│   └── package.json
 │
-└── docs
+└── README.md
 ```
 
-## Installation
+---
 
-### Backend
+# ⚙️ Installation
+
+## Clone Repository
+
+```bash
+git clone https://github.com/khushbu12121/AI-Interview-Analyzer-Pro.git
+cd AI-Interview-Analyzer-Pro
+```
+
+---
+
+## Backend Setup
 
 ```bash
 cd backend
 
 python -m venv venv
 
+# Windows
 venv\Scripts\activate
+
+# Linux/Mac
+source venv/bin/activate
 
 pip install -r requirements.txt
 
 uvicorn main:app --reload
 ```
 
-### Frontend
+---
+
+## Frontend Setup
 
 ```bash
 cd frontend
@@ -147,38 +149,67 @@ npm run dev
 
 ---
 
-## Environment Variables
+# 🔑 Environment Variables
 
-Create a `.env` file inside the backend folder:
+Create a `.env` file inside the backend folder.
 
 ```env
-GEMINI_API_KEY=YOUR_API_KEY
+DATABASE_URL=YOUR_NEON_DATABASE_URL
+
+SECRET_KEY=YOUR_SECRET_KEY
+
+ALGORITHM=HS256
+
+ACCESS_TOKEN_EXPIRE_MINUTES=60
+
+GEMINI_API_KEY=YOUR_GEMINI_API_KEY
 ```
 
 ---
 
-## Future Improvements
+# 📸 Screenshots
 
-* Real-time Emotion Detection
-* Advanced AI Evaluation
-* PDF Report Export
-* Live Video Interviews
-* Interview Performance Graphs
-* Deployment on Render/Vercel
-* Multi-role Interview Support
+> Add screenshots after deployment.
 
----
-
-## Author
-
-Khushbu Bansal
-
-B.Tech Student | Full Stack & AI Enthusiast
+- Login Page
+- Dashboard
+- Resume Upload
+- AI Interview
+- Interview Report
+- Interview History
 
 ---
 
-## Project Status
+# 🎯 Future Improvements
 
-Version: V2
+- AI Follow-up Questions
+- ATS Resume Score
+- Docker Support
+- CI/CD Pipeline
+- Interview Replay
+- Performance Graphs
+- Multi-role Interview Support
 
-Status: Active Development
+---
+
+# 👩‍💻 Author
+
+**Khushbu Bansal**
+
+B.Tech CSE Student
+
+Full Stack Developer | AI Enthusiast
+
+GitHub: https://github.com/khushbu12121
+
+---
+
+# ⭐ Project Status
+
+✅ Active Development
+
+---
+
+# 💡 Why AI Interview Analyzer Pro?
+
+This platform simulates real interview experiences using AI-powered resume analysis, personalized interview generation, emotion detection, and intelligent answer evaluation. It helps candidates identify their strengths, improve weak areas, and prepare effectively for technical interviews.
