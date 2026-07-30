@@ -1,8 +1,7 @@
-from fastapi import APIRouter
-from fastapi import Header
+from fastapi import APIRouter, Depends
 
 from app.services.security import (
-    verify_token
+    get_current_user
 )
 
 from app.database.connection import (
@@ -16,40 +15,8 @@ router = APIRouter()
 
 @router.get("/me")
 def get_profile(
-    authorization: str = Header(None)
+    user_id: int = Depends(get_current_user)
 ):
-
-    if not authorization:
-
-        return {
-            "message":
-            "Token Missing"
-        }
-
-    token = authorization.replace(
-        "Bearer ",
-        ""
-    )
-
-    payload = verify_token(
-        token
-    )
-
-    print("================================")
-    print("TOKEN RECEIVED =", token)
-    print("PAYLOAD =", payload)
-    print("================================")
-
-    if not payload:
-
-        return {
-            "message":
-            "Invalid Token"
-        }
-
-    user_id = payload.get(
-        "user_id"
-    )
 
     db = SessionLocal()
 
