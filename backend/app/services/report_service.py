@@ -1,5 +1,9 @@
 from app.database.connection import SessionLocal
 
+from app.models.interview_session import (
+    InterviewSession
+)
+
 from app.models.interview_answer import (
     InterviewAnswer
 )
@@ -21,11 +25,30 @@ from app.services.career_readiness_service import (
 )
 
 
-def generate_report(session_id):
+def generate_report(
+    session_id,
+    user_id
+):
 
     db = SessionLocal()
 
     try:
+
+        session = db.query(
+            InterviewSession
+        ).filter(
+            InterviewSession.id == session_id
+        ).first()
+
+        if not session:
+            return {
+                "message": "Interview session not found"
+            }
+
+        if session.user_id != user_id:
+            return {
+                "message": "Unauthorized access"
+            }
 
         answers = db.query(
             InterviewAnswer
@@ -101,33 +124,23 @@ def generate_report(session_id):
 
         else:
 
-            performance = (
-                "Needs Improvement"
-            )
+            performance = "Needs Improvement"
 
         if average_score >= 8:
 
-            verdict = (
-                "Strong Candidate"
-            )
+            verdict = "Strong Candidate"
 
         elif average_score >= 6:
 
-            verdict = (
-                "Good Candidate"
-            )
+            verdict = "Good Candidate"
 
         elif average_score >= 4:
 
-            verdict = (
-                "Average Candidate"
-            )
+            verdict = "Average Candidate"
 
         else:
 
-            verdict = (
-                "Needs More Practice"
-            )
+            verdict = "Needs More Practice"
 
         # -----------------------------
         # AI Interview Summary
@@ -136,8 +149,9 @@ def generate_report(session_id):
         try:
 
             summary_data = generate_summary(
-                session_id
-            )
+    session_id,
+    user_id
+)
 
             summary = summary_data.get(
                 "summary",
@@ -146,9 +160,7 @@ def generate_report(session_id):
 
         except:
 
-            summary = (
-                "Summary unavailable"
-            )
+            summary = "Summary unavailable"
 
         # -----------------------------
         # Resume vs Interview Skill Gap
@@ -162,9 +174,7 @@ def generate_report(session_id):
 
         except:
 
-            skill_gap = (
-                "Skill gap unavailable."
-            )
+            skill_gap = "Skill gap unavailable."
 
         # -----------------------------
         # AI Learning Roadmap
@@ -178,9 +188,7 @@ def generate_report(session_id):
 
         except:
 
-            roadmap = (
-                "Learning roadmap unavailable."
-            )
+            roadmap = "Learning roadmap unavailable."
 
         # -----------------------------
         # Smart Career Readiness

@@ -4,14 +4,39 @@ from app.models.interview_answer import (
     InterviewAnswer
 )
 
+from app.models.interview_session import (
+    InterviewSession
+)
+
 from app.services.gemini_service import model
 
 
-def generate_summary(session_id):
+def generate_summary(
+    session_id,
+    user_id
+):
 
     db = SessionLocal()
 
     try:
+
+        session = db.query(
+            InterviewSession
+        ).filter(
+            InterviewSession.id == session_id
+        ).first()
+
+        if not session:
+
+            return {
+                "summary": "Interview session not found"
+            }
+
+        if session.user_id != user_id:
+
+            return {
+                "summary": "Unauthorized access"
+            }
 
         answers = db.query(
             InterviewAnswer

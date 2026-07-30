@@ -195,10 +195,19 @@ if (
 
         
 
+const token = localStorage.getItem("token");
+
 const response = await axios.get(
-    `http://127.0.0.1:8000/report/${sessionId}`
+    `http://127.0.0.1:8000/report/${sessionId}`,
+    {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
 );
- console.log(response.data.roadmap);
+
+console.log(response.data.roadmap);
+
 setReport(response.data);
 
       } catch (error) {

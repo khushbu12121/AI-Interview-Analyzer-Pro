@@ -25,10 +25,19 @@ function Summary() {
             "sessionId"
           );
 
-        const response =
-          await axios.get(
-            `http://127.0.0.1:8000/summary/${sessionId}`
-          );
+        const token = localStorage.getItem("token");
+
+const response =
+  await axios.get(
+    `http://127.0.0.1:8000/summary/${sessionId}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }
+  );
+
+console.log("Summary Data:", response.data);
           console.log("Summary Data:", response.data);
 
         setSummary(
